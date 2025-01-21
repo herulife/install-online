@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Keluhan Laptop</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f4f9;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 50px auto;
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    input,
+    textarea,
+    button {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    button {
+      background: #28a745;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #218838;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Form Keluhan Laptop</h1>
+    <form id="complaint-form">
+      <label for="name">Nama Anda:</label>
+      <input type="text" id="name" name="name" placeholder="Masukkan nama Anda" required>
+
+      <label for="email">Email Anda (Opsional):</label>
+      <input type="email" id="email" name="email" placeholder="Masukkan email Anda">
+
+      <label for="complaint">Keluhan Laptop:</label>
+      <textarea id="complaint" name="complaint" rows="5" placeholder="Ceritakan keluhan laptop Anda..."
+        required></textarea>
+
+      <button type="button" id="send-whatsapp">Kirim ke WhatsApp</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('send-whatsapp').addEventListener('click', function () {
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const complaint = document.getElementById('complaint').value;
+
+      if (!name || !complaint) {
+        alert('Nama dan Keluhan wajib diisi!');
+        return;
+      }
+
+      // Nomor WhatsApp tujuan (ganti dengan nomor Anda)
+      const phoneNumber = '6281234567890';
+
+      // Pesan yang akan dikirim ke WhatsApp
+      const message = `Halo, saya ingin melaporkan keluhan laptop.\n\n` +
+        `Nama: ${name}\n` +
+        (email ? `Email: ${email}\n` : '') +
+        `Keluhan: ${complaint}`;
+
+      // URL WhatsApp dengan pesan
+      const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+
+      // Buka URL WhatsApp
+      window.open(whatsappURL, '_blank');
+    });
+  </script>
+</body>
+
+</html>
