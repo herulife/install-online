@@ -226,3 +226,13 @@ button {
 button:hover {
   background: #218838;
 }
+table td del {
+  color: red;
+  font-weight: 700;
+  text-decoration: line-through;
+}
+
+table td {
+  font-size: large;
+  font-weight: 500;
+}
